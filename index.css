@@ -1,0 +1,39 @@
+.navbar-nav {
+    padding-right: 3rem;
+}
+
+.navbar-brand {
+    padding-left: 3rem;
+}
+
+.theme-button {
+    margin-right: 2rem;
+}
+
+.text-main {
+    margin-top: 3rem;
+}
+
+.images-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-top: 2rem;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.image {
+    box-shadow: 0 0 10px rgb(103, 103, 103);
+}
+
+.footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+}
+
+.gen-btn {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
