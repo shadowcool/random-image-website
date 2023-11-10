@@ -98,16 +98,35 @@ const imageContainer = document.getElementById('images-container')
 const imageLimit = 20;
 
 for (let i = 0; i < imageLimit; i++) {
+
+    const imgContainer = document.createElement('div');
+
+    imgContainer.classList.add('image-container')
+
     const img = document.createElement('img');
+
+    const btn = document.createElement('a');
 
     img.classList.add('image')
 
     img.classList.add('rounded')
 
+    btn.classList.add('btn')
+    
+    btn.classList.add('button')
+
+    btn.innerHTML = '<i class="bi bi-download"></i>'
+
     fetch(url).then((res) => {
         img.src = res.url;
 
-        imageContainer.appendChild(img);
+        btn.href = img.src;
+
+        imageContainer.appendChild(imgContainer);
+
+        imgContainer.appendChild(img);
+
+        imgContainer.appendChild(btn);
 
     })
 }
@@ -117,17 +136,43 @@ for (let i = 0; i < imageLimit; i++) {
 const generateButton = document.getElementById('generate-button')
 
 generateButton.addEventListener('click', () => {
-    
-        const images = document.getElementsByClassName('image')        
-    
-        for (let i = 0; i < images.length; i++) {
 
-            images[i].src = '';
+    const imgs = document.getElementsByClassName('image-container');
 
-            const img = images[i];
+    while (imgs.length > 0) {
+        imgs[0].remove();
+    }
+
+    for (let i = 0; i < imageLimit; i++) {            
+        const imgContainer = document.createElement('div');
     
-            fetch(url).then((res) => {
-                img.src = res.url;
-            })
-        }
-    })
+        imgContainer.classList.add('image-container')
+    
+        const img = document.createElement('img');
+    
+        const btn = document.createElement('a');
+    
+        img.classList.add('image')
+    
+        img.classList.add('rounded')
+    
+        btn.classList.add('btn')
+
+        btn.classList.add('button')
+    
+        btn.innerHTML = '<i class="bi bi-download"></i>'
+    
+        fetch(url).then((res) => {
+            img.src = res.url;
+
+            btn.href = img.src;
+    
+            imageContainer.appendChild(imgContainer);
+    
+            imgContainer.appendChild(img);
+    
+            imgContainer.appendChild(btn);
+    
+        })
+    }
+})

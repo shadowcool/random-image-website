@@ -23,7 +23,55 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+.image-container:hover {
+    transform: scale(1.06);
+    transition: transform 0.5s;
+}
+
+.image:hover {
+    opacity: .5;
+    background-color: #000;
+    transition: 0.5s;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+}
+
+.image-container .button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.image-container:hover .image {
+    opacity: 0.3;
+}
+
+.image-container:hover .button {
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
 .image {
+    opacity: 1;
+    animation: .3s ease-in-out;
+    -webkit-animation: .3s ease-in-out;
+    transition: .3s ease-in-out;
     box-shadow: 0 0 10px rgb(103, 103, 103);
 }
 
@@ -36,4 +84,8 @@
 .gen-btn {
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.theme-button {
+    width: 3rem;
 }
