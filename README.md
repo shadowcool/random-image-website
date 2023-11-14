@@ -15,3 +15,12 @@ Just download the source code and open the `index.html` file with your preferabl
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## TO-DO
+
+- Add Image Info:
+    Keywords (If any)
+    Height
+    Width
+- Add Categories and Keywords Filterations
+- Use "https://api-ninjas.com/api/randomimage" API instead

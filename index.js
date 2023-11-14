@@ -153,13 +153,18 @@ function createModal(url, position) {
 
 // GET IMAGES
 
-const url = "https://picsum.photos/300"
+let url = "https://picsum.photos/320/180";
 
 const imageContainer = document.getElementById('images-container')
 
 const imageLimit = 20;
 
 for (let i = 0; i < imageLimit; i++) {
+
+    const maxWidth = ((window.innerWidth - 100) / 3).toFixed(0);
+    const maxHeight = ((window.innerHeight - 100) / 3).toFixed(0);
+
+    url = `https://picsum.photos/${maxWidth}/${maxHeight}`;  
 
     const imgContainer = document.createElement('div');
 
@@ -179,7 +184,13 @@ for (let i = 0; i < imageLimit; i++) {
 
     btn.type = "button";
 
-    fetch(url).then((res) => {
+    imgContainer.setAttribute('style', `width: ${maxWidth}px !important;`)
+    imgContainer.setAttribute('style', `height: ${maxHeight}px !important;`)
+
+    btn.setAttribute('style', `width: ${maxWidth}px !important;`)
+    btn.setAttribute('style', `height: ${maxHeight}px !important;`)
+
+    fetch(`${url}?random=${i + 1}`).then((res) => {
         img.src = res.url;
 
         btn.dataset.bsTarget = `#m${i}`;
@@ -240,6 +251,8 @@ for (let i = 0; i < imageLimit; i++) {
             }, 1000)
         });
     })
+
+    url = "https://picsum.photos/320/180";
 }
 
 // GENERATE NEW IMAGES
@@ -248,17 +261,37 @@ const generateButton = document.getElementById('generate-button')
 
 generateButton.addEventListener('click', () => {
 
+    const width = document.getElementById('width-input').value;
+    const height = document.getElementById('height-input').value;
+
+    const maxWidth = ((window.innerWidth - 100) / 3).toFixed(0);
+    const maxHeight = ((window.innerHeight - 100) / 3).toFixed(0);
+
+    if(Number(width) > maxWidth || Number(height) > maxHeight) {
+      return alert(`Maximum width is ${maxWidth}px and maximum height is ${maxHeight}px`)
+    }
+
+    if(width === '' && height === '') {
+      url = `https://picsum.photos/${maxWidth}/${maxHeight}`;
+    }
+
     const imgs = document.getElementsByClassName('image-container');
 
+    const modals = document.getElementsByClassName('modal');
+
     while (imgs.length > 0) {
-        imgs[0].remove();
+      imgs[0].remove();
+    }
+
+    while (modals.length > 0) {
+      modals[0].remove();
     }
 
     for (let i = 0; i < imageLimit; i++) {            
         const imgContainer = document.createElement('div');
     
-        imgContainer.classList.add('image-container')
-    
+        imgContainer.classList.add('image-container');
+
         const img = document.createElement('img');
     
         const btn = document.createElement('a');
@@ -269,9 +302,21 @@ generateButton.addEventListener('click', () => {
     
         btn.classList.add('btn')
 
-        btn.classList.add('button')
-    
-        fetch(url).then((res) => {
+        btn.classList.add('button');
+
+        btn.type = "button";
+
+        if(width !== '' && height !== '') {
+          imgContainer.setAttribute('style', `width: ${width}px !important;`)
+          imgContainer.setAttribute('style', `height: ${height}px !important;`)
+
+          btn.setAttribute('style', `width: ${width}px !important;`)
+          btn.setAttribute('style', `height: ${height}px !important;`)
+
+          url = `https://picsum.photos/${width}/${height}`;
+        }
+
+        fetch(`${url}?random=${i + 1}`).then((res) => {
             img.src = res.url;
 
             btn.dataset.bsTarget = `#m${i}`;
@@ -333,4 +378,6 @@ generateButton.addEventListener('click', () => {
             });
         })
     }
+
+    url = "https://picsum.photos/320/180";
 });

@@ -20,7 +20,7 @@
     margin-top: 2rem;
     display: grid;
     gap: 50px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .image-container:hover {
@@ -37,8 +37,8 @@
 .image-container {
     position: relative;
     display: inline-block;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 180px;
 }
 
 .image-container .button {
@@ -141,4 +141,10 @@
     .modal-body {
         display: flex;
     }
+}
+
+.w-h-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
