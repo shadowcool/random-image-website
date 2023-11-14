@@ -271,8 +271,6 @@ generateButton.addEventListener('click', () => {
 
         btn.classList.add('button')
     
-        btn.innerHTML = '<i class="bi bi-download"></i>'
-    
         fetch(url).then((res) => {
             img.src = res.url;
 
