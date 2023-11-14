@@ -49,7 +49,7 @@
     display: none;
 }
 
-.button {
+.button{
     width: 100%;
     height: 100%;
     display: none;
@@ -88,4 +88,57 @@
 
 .theme-button {
     width: 3rem;
+}
+
+.modal-image-container {
+    margin-right: 30px;
+}
+
+.modal-body {
+    display: block;
+}
+
+.modal-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copy-logo {
+    margin-left: 1rem;
+}
+
+.copy-btn, .copy-html-btn {
+    cursor: pointer;
+}
+
+.copied-btn {
+    cursor: default;
+}
+
+.modal-html-container {
+    margin-top: 10%;
+}
+
+.modal-html-code {
+    resize: none;
+}
+
+.modal-info-buttons {
+    margin-top: 10%;
+}
+
+.btn-2 {
+    margin-left: 5%;
+}
+
+.modal-info-button {
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .modal-body {
+        display: flex;
+    }
 }
